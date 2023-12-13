@@ -1,13 +1,143 @@
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(185, 41%, 84%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input {
+  border: none;
+  outline: none; /* Removes the outline when the input is focused */
+}
+
+/*For movile 
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+.container {
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 4%;
+  display: flex;
+  width: 95%;
+  height: 18rem;
+}
+
+/*Bill section - CustomTip()*/
+.billInformation {
+  display: flex;
+  flex-flow: column wrap;
+  width: 50%;
+  margin: 1rem;
+}
+
+.icon-wrapper {
+  position: absolute;
+  margin-left: 2px;
+}
+
+.icon-wrapper img {
+  width: 9px;
+  margin-left: 7px;
+  margin-top: 4px;
+}
+
+.bill_inputs {
+  width: 90%;
+  text-align: right;
+  min-height: 1.4rem;
+  background-color: hsl(202.5, 50%, 96.86%);
+}
+
+.billInformation h5 {
+  margin-block-end: 0rem;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+ul .buttons_percentages {
+  display: inline-flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
+  cursor: pointer;
+  margin: 1px;
+  min-height: 1.5625rem;
+  width: 30%;
+  border-radius: 3px;
+  background-color: hsl(183, 100%, 15%);
+}
+
+ul .buttons_percentages:hover:not(:nth-child(6)) {
+  background-color: hsl(172, 64%, 49%);
+}
+
+.buttons_percentages:last-child {
+  cursor: unset;
+  text-align: right;
+  background-color: hsl(202.5, 50%, 96.86%);
+  color: hsl(183, 100%, 15%);
+}
+
+/*Total section - AmountPay() */
+.totalInformation {
+  display: flex;
+  flex-flow: column wrap;
+  width: 50%;
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 10%;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.pay_information {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.totalInformation h6 {
+  display: inline;
+  margin-right: 1.875rem;
+  color: white;
+
+  font-size: 14px;
+
+  margin-block-start: 0.5625rem;
+  margin-block-end: 0.6875rem;
+}
+
+.price {
+  color: hsl(172, 67%, 45%);
+  font-size: 2.2rem;
+  font-weight: 600;
+  padding-right: 1rem;
+}
+
+.reset_button {
+  height: 30px;
+  margin-top: auto;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: hsl(172, 67%, 45%);
+}
+
+.reset_button:hover {
+  background-color: hsl(172, 64%, 49%);
 }
