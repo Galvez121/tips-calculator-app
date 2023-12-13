@@ -51,6 +51,13 @@ body {
 
 .bill_inputs {
   width: 90%;
+  color: hsl(183, 100%, 15%);
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
   text-align: right;
   min-height: 1.4rem;
   background-color: hsl(202.5, 50%, 96.86%);

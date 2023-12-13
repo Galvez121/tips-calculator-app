@@ -73,6 +73,28 @@ One trick that I learn in this challenge is using margin-top: auto; to put an el
 }
 ```
 
+This is how you only allow numbers in the <input>:
+
+```js
+const [inputValue, setInputValue] = useState(0);
+
+const handleInputValue = (e) => {
+  const value = e.target.value;
+
+  // Allow only numeric values and an optional dot
+  const sanitizedValue = value.replace(/[^0-9.]/g, "");
+
+  setInputValue(sanitizedValue);
+};
+
+<input
+  type="text"
+  value={inputValue}
+  onChange={handleInputValue}
+  className="bill_inputs"
+/>;
+```
+
 To see how you can add code snippets, see below:
 
 ```html
