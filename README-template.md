@@ -50,7 +50,7 @@ After applying design to the website, it looks like this:
 
 The first part of the design is completed;
 
-![](./images/third-screenshot.png)
+![](./images/Third-screenshot.png)
 
 ### Built with
 
