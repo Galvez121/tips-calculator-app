@@ -12,14 +12,19 @@ export default function App() {
   // Total
   let totalPayment = tip + inputValue;
 
-  const handleInputValue = (e) => {
+  function handleInputValue(e) {
     const value = e.target.value;
 
     // Allow only numeric values and an optional dot
     const sanitizedValue = value.replace(/[^0-9.]/g, "");
 
     setInputValue(Number(sanitizedValue));
-  };
+  }
+
+  function resetAllValues() {
+    setInputValue(0);
+    setTip(0);
+  }
 
   function handleTip(percentage) {
     setTip((inputValue * percentage) / 100);
@@ -32,7 +37,11 @@ export default function App() {
         onInputValue={handleInputValue}
         onTip={handleTip}
       />
-      <AmountPay tipAmount={tip} totalPayment={totalPayment} />
+      <AmountPay
+        resetAllValues={resetAllValues}
+        tipAmount={tip}
+        totalPayment={totalPayment}
+      />
     </main>
   );
 }
@@ -46,6 +55,16 @@ function CustomTip({ inputValue, onInputValue, onTip }) {
 }
 
 function Bill({ inputValue, onInputValue, onTip }) {
+  const [numberOfPeople, setNumberOfPeople] = useState(0);
+
+  function handleNumberOfPeople(e) {
+    const value = e.target.value;
+
+    // Allow only numeric values and an optional dot
+    const sanitizedValue = value.replace(/[^0-9.]/g, "");
+    setNumberOfPeople(sanitizedValue);
+  }
+
   return (
     <>
       <div>
@@ -71,7 +90,15 @@ function Bill({ inputValue, onInputValue, onTip }) {
               {value}%
             </li>
           ))}
-          <input type="text" className="buttons_percentages" />
+          <input
+            type="text"
+            className="buttons_percentages"
+            onChange={(e) => onTip(e.target.value)}
+            pattern="[0-9]*[.]?[0-9]*"
+            onInput={(e) => {
+              e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+            }}
+          />
         </ul>
       </div>
       <div>
@@ -80,21 +107,30 @@ function Bill({ inputValue, onInputValue, onTip }) {
           {" "}
           <img src={IconPerson} alt="Dollar Icon" />
         </span>
-        <input type="text" className="bill_inputs" />
+        <input
+          type="text"
+          className="bill_inputs"
+          value={numberOfPeople}
+          onChange={handleNumberOfPeople}
+        />
       </div>
     </>
   );
 }
 
-function AmountPay({ tipAmount, totalPayment }) {
+function AmountPay({ resetAllValues, totalPayment, tipAmount }) {
   return (
     <section className="totalInformation">
-      <TotalAmount tipAmount={tipAmount} totalPayment={totalPayment} />
+      <TotalAmount
+        resetAllValues={resetAllValues}
+        tipAmount={tipAmount}
+        totalPayment={totalPayment}
+      />
     </section>
   );
 }
 
-function TotalAmount({ tipAmount, totalPayment }) {
+function TotalAmount({ resetAllValues, tipAmount, totalPayment }) {
   return (
     <>
       <div className="pay_information">
@@ -106,7 +142,9 @@ function TotalAmount({ tipAmount, totalPayment }) {
         <span className="price">$ {totalPayment}</span>
       </div>
 
-      <button className="reset_button">Reset</button>
+      <button className="reset_button" onClick={resetAllValues}>
+        Reset
+      </button>
     </>
   );
 }

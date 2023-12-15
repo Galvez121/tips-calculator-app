@@ -148,3 +148,28 @@ ul .buttons_percentages:hover:not(:nth-child(6)) {
 .reset_button:hover {
   background-color: hsl(172, 64%, 49%);
 }
+
+@media (max-width: 450px) {
+  .container {
+    flex-direction: column;
+    height: 40rem;
+  }
+
+  .billInformation {
+    width: inherit;
+    height: auto;
+  }
+
+  .totalInformation {
+    width: auto;
+    height: auto;
+  }
+
+  ul .buttons_percentages {
+    height: 3rem;
+  }
+
+  .bill_inputs {
+    min-height: 2.4rem;
+  }
+}
